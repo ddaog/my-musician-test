@@ -256,8 +256,8 @@ export default function CreatePage() {
             // Auto-generate title
             const autoTitle = `${nickname.trim()}의 최애 아티스트 TOP 10`;
 
-            // Use my-musician-test specific API path
-            const res = await fetch("/my-musician-test/api/quizzes", {
+            // Use my-musician-test specific API path (now relative root)
+            const res = await fetch("/api/quizzes", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title: autoTitle, items: trimmed }),
@@ -267,7 +267,7 @@ export default function CreatePage() {
 
             localStorage.removeItem(STORAGE_KEY);
             sessionStorage.setItem(`editToken_${data.slug}`, data.editToken);
-            router.push(`/my-musician-test/q/${data.slug}?created=1`);
+            router.push(`/q/${data.slug}?created=1`);
         } catch (err) {
             setError(err instanceof Error ? err.message : "생성에 실패했습니다.");
         } finally {
@@ -339,7 +339,7 @@ export default function CreatePage() {
         <div className="min-h-screen bg-[var(--bg-color)] flex flex-col items-center">
             <header className="fixed top-0 w-full max-w-lg ios-glass z-50 px-4 h-16 flex items-center justify-between">
                 <Link
-                    href="/my-musician-test"
+                    href="/"
                     className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--tertiary-bg)] transition-colors"
                 >
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

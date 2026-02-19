@@ -46,7 +46,7 @@ export default function Home() {
 
                 <div className="flex flex-col gap-4">
                     <Link
-                        href="/my-musician-test/create"
+                        href="/create"
                         className="w-full py-5 rounded-2xl bg-[var(--color-primary)] text-white font-bold text-xl ios-button shadow-lg shadow-[var(--color-primary)]/20 text-center"
                     >
                         새 테스트 만들기

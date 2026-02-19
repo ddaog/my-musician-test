@@ -28,8 +28,8 @@ export default function ResultPage() {
         setLoading(true);
         // Use my-musician-test specific API paths (though they point to same DB, best to be consistent)
         Promise.all([
-            fetch(`/my-musician-test/api/quizzes/${slug}`).then(r => r.json()),
-            fetch(`/my-musician-test/api/quizzes/${slug}/submit-details?submissionId=${submissionId}`).then(r => r.json())
+            fetch(`/api/quizzes/${slug}`).then(r => r.json()),
+            fetch(`/api/quizzes/${slug}/submit-details?submissionId=${submissionId}`).then(r => r.json())
         ])
             .then(([quizData, subData]) => {
                 if (quizData.error) throw new Error(quizData.error);
@@ -70,7 +70,7 @@ export default function ResultPage() {
 
     const shareResult = () => {
         const text = `내 최애 아티스트 테스트 결과: ${score}점! ${getRankEmoji(score)} \n너도 친구의 취향을 맞춰봐!`;
-        const url = `${window.location.origin}/my-musician-test/q/${slug}`;
+        const url = `${window.location.origin}/q/${slug}`;
 
         if (navigator.share) {
             navigator.share({ title: "내 최애 아티스트를 맞춰봐", text, url });
@@ -171,13 +171,13 @@ export default function ResultPage() {
 
                     <div className="grid grid-cols-2 gap-3">
                         <Link
-                            href={`/my-musician-test/q/${slug}`}
+                            href={`/q/${slug}`}
                             className="py-4 rounded-2xl bg-[var(--tertiary-bg)] text-white font-bold text-center ios-button border border-[var(--glass-border)]"
                         >
                             다시 도전
                         </Link>
                         <Link
-                            href="/my-musician-test/create"
+                            href="/create"
                             className="py-4 rounded-2xl bg-[var(--tertiary-bg)] text-white font-bold text-center ios-button border border-[var(--glass-border)]"
                         >
                             나도 만들기
@@ -185,7 +185,7 @@ export default function ResultPage() {
                     </div>
 
                     <Link
-                        href={`/my-musician-test/q/${slug}/leaderboard`}
+                        href={`/q/${slug}/leaderboard`}
                         className="block w-full py-4 rounded-2xl bg-white text-black font-bold text-lg text-center ios-button shadow-xl"
                     >
                         전체 순위표 보기
@@ -209,7 +209,7 @@ export default function ResultPage() {
             </main>
 
             <footer className="fixed bottom-0 w-full max-w-lg ios-glass h-20 px-6 flex items-center justify-center z-50">
-                <Link href="/my-musician-test" className="text-[var(--text-secondary)] font-bold hover:text-white transition-colors">
+                <Link href="/" className="text-[var(--text-secondary)] font-bold hover:text-white transition-colors">
                     메인으로 돌아가기
                 </Link>
             </footer>

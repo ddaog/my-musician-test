@@ -126,7 +126,7 @@ export default function QuizClient({ slug, initialData }: { slug: string; initia
             return;
         }
 
-        fetch(`/my-musician-test/api/quizzes/${slug}`)
+        fetch(`/api/quizzes/${slug}`)
             .then((r) => r.json())
             .then((data) => {
                 if (data.error) throw new Error(data.error);
@@ -179,14 +179,14 @@ export default function QuizClient({ slug, initialData }: { slug: string; initia
         setError("");
         try {
             const answers = order.map((name, i) => ({ name, rank: i + 1 }));
-            const res = await fetch(`/my-musician-test/api/quizzes/${slug}/submit`, {
+            const res = await fetch(`/api/quizzes/${slug}/submit`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ nickname: nickname.trim(), answers }),
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || "제출 실패");
-            router.push(`/my-musician-test/q/${slug}/result/${data.submissionId}?score=${data.score}`);
+            router.push(`/q/${slug}/result/${data.submissionId}?score=${data.score}`);
         } catch (err) {
             setError(err instanceof Error ? err.message : "제출에 실패했습니다.");
         } finally {
@@ -194,7 +194,7 @@ export default function QuizClient({ slug, initialData }: { slug: string; initia
         }
     };
 
-    const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/my-musician-test/q/${slug}` : "";
+    const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/q/${slug}` : "";
 
     const copyLink = () => {
         navigator.clipboard.writeText(shareUrl);
@@ -223,7 +223,7 @@ export default function QuizClient({ slug, initialData }: { slug: string; initia
                     </svg>
                 </div>
                 <p className="text-white text-lg font-bold mb-2">{error}</p>
-                <Link href="/my-musician-test" className="text-[var(--color-primary-light)] font-medium hover:underline">
+                <Link href="/" className="text-[var(--color-primary-light)] font-medium hover:underline">
                     홈으로 돌아가기
                 </Link>
             </div>
@@ -235,7 +235,7 @@ export default function QuizClient({ slug, initialData }: { slug: string; initia
     return (
         <div className="min-h-screen bg-[var(--bg-color)] flex flex-col items-center">
             <header className="fixed top-0 w-full max-w-lg ios-glass z-50 px-4 h-16 flex items-center justify-between">
-                <Link href="/my-musician-test" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--tertiary-bg)] transition-colors">
+                <Link href="/" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--tertiary-bg)] transition-colors">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -390,7 +390,7 @@ export default function QuizClient({ slug, initialData }: { slug: string; initia
                                     {submitting ? "채점 중..." : "제출하고 결과 보기"}
                                 </button>
                                 <Link
-                                    href={`/my-musician-test/q/${slug}/leaderboard`}
+                                    href={`/q/${slug}/leaderboard`}
                                     className="flex-1 py-4 rounded-2xl bg-[var(--tertiary-bg)] text-white font-bold text-lg text-center ios-button border border-[var(--glass-border)]"
                                 >
                                     순위표
