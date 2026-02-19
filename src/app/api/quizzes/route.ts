@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
         const { data: quiz, error: quizError } = await supabase
             .from("quizzes")
-            .insert({ slug, title, edit_token: editToken })
+            .insert({ slug, title, edit_token: editToken, type: 'musician' })
             .select("id")
             .single();
 

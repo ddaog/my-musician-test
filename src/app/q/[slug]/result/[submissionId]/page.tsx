@@ -194,12 +194,12 @@ export default function ResultPage() {
 
                 <div className="mt-16 w-full opacity-80">
                     <a
-                        href="https://link.coupang.com/a/dOnR5i"
+                        href="https://link.coupang.com/a/dO9ItD"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block w-full p-4 rounded-2xl bg-gradient-to-r from-[var(--color-warning)] to-[#FF9500] text-black font-extrabold text-center hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
                     >
-                        🎸 재밌으셨다면? 최애 굿즈 찾아보기!
+                        🎸 재밌으셨다면? 악기 구경하기!
                     </a>
                     <p className="mt-3 text-[10px] text-[var(--text-tertiary)] leading-tight text-center">
                         이 포스팅은 쿠팡 파트너스 활동의 일환으로,<br />이에 따른 일정액의 수수료를 제공받습니다.
