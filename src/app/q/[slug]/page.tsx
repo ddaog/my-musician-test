@@ -57,7 +57,7 @@ export async function generateMetadata(
             description: "친구의 음악 취향을 얼마나 잘 알고 있나요? 지금 도전해보세요!",
             images: [
                 {
-                    url: "/og-image-kakao.jpeg",
+                    url: "/og-image-kakao2.jpeg",
                     width: 800,
                     height: 400,
                     alt: "내 최애 아티스트를 맞춰봐"
@@ -68,7 +68,7 @@ export async function generateMetadata(
             card: "summary_large_image",
             title: ogTitle,
             description: "친구의 음악 취향을 얼마나 잘 알고 있나요? 지금 도전해보세요!",
-            images: ["/og-image-kakao.jpeg"],
+            images: ["/og-image-kakao2.jpeg"],
         },
     };
 }

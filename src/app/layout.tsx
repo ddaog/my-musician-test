@@ -4,10 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
     title: "내 최애 아티스트를 맞춰봐 | my-musician-test",
     description: "내가 좋아하는 아티스트 1위~10위 맞추기 테스트. 친구들과 순위를 맞춰보세요!",
+    metadataBase: new URL("https://my-musician-test.vercel.app"),
     openGraph: {
         title: "내 최애 아티스트를 맞춰봐",
         description: "내가 좋아하는 아티스트 1위~10위 맞추기 테스트",
-        images: ["/og-image-kakao.jpeg"],
+        images: ["/og-image-kakao2.jpeg"],
     },
 };
 
