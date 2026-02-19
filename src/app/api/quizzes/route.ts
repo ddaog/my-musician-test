@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
         if (quizError) {
             console.error(quizError);
             return NextResponse.json(
-                { error: "퀴즈 생성에 실패했습니다." },
+                { error: `퀴즈 생성 실패: ${quizError.message || JSON.stringify(quizError)}` },
                 { status: 500 }
             );
         }
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
             await supabase.from("quizzes").delete().eq("id", quiz.id);
             console.error(itemsError);
             return NextResponse.json(
-                { error: "퀴즈 항목 저장에 실패했습니다." },
+                { error: `퀴즈 항목 저장 실패: ${itemsError.message || JSON.stringify(itemsError)}` },
                 { status: 500 }
             );
         }
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     } catch (e) {
         console.error(e);
         return NextResponse.json(
-            { error: "서버 오류가 발생했습니다." },
+            { error: `서버 오류: ${e instanceof Error ? e.message : JSON.stringify(e)}` },
             { status: 500 }
         );
     }
