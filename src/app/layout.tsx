@@ -8,6 +8,23 @@ export const metadata: Metadata = {
     openGraph: {
         title: "내 최애 아티스트를 맞춰봐",
         description: "내가 좋아하는 아티스트 1위~10위 맞추기 테스트",
+        url: "https://my-musician-test.vercel.app",
+        siteName: "My Musician Test",
+        images: [
+            {
+                url: "/og-image-kakao2.jpeg",
+                width: 800,
+                height: 400,
+                alt: "내 최애 아티스트를 맞춰봐",
+            },
+        ],
+        locale: "ko_KR",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "내 최애 아티스트를 맞춰봐",
+        description: "내가 좋아하는 아티스트 1위~10위 맞추기 테스트",
         images: ["/og-image-kakao2.jpeg"],
     },
 };
