@@ -1,0 +1,12 @@
+import { customAlphabet } from "nanoid";
+
+const alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
+const nanoid = customAlphabet(alphabet, 10);
+
+export function generateSlug(): string {
+  return nanoid();
+}
+
+export function generateEditToken(): string {
+  return `et_${nanoid()}${nanoid()}`;
+}
