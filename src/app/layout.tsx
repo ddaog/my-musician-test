@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
     title: "내 최애 아티스트를 맞춰봐 | my-musician-test",
@@ -6,28 +7,37 @@ export const metadata: Metadata = {
     openGraph: {
         title: "내 최애 아티스트를 맞춰봐",
         description: "내가 좋아하는 아티스트 1위~10위 맞추기 테스트",
-        images: ["/og-image-kakao.jpeg"], // Keeping existing image for now as requested to maintain file structure, but ideally should be replaced.
+        images: ["/og-image-kakao.jpeg"],
     },
 };
 
-export default function MusicianLayout({
+export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
     return (
-        <div
-            style={
-                {
-                    "--color-primary": "#1DB954", // Spotify-like Green
-                    "--color-primary-light": "#1ED760",
-                    "--color-success": "#00C853",
-                } as React.CSSProperties
-            }
-            className="min-h-screen w-full relative"
-        >
-            {/* Background blobs reusing the primary colors - scope them here if needed or relying on page.tsx to use vars */}
-            {children}
-        </div>
+        <html lang="ko">
+            <head>
+                <link
+                    rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+                />
+            </head>
+            <body className="antialiased">
+                <div
+                    style={
+                        {
+                            "--color-primary": "#1DB954", // Spotify-like Green
+                            "--color-primary-light": "#1ED760",
+                            "--color-success": "#00C853",
+                        } as React.CSSProperties
+                    }
+                    className="min-h-screen w-full relative"
+                >
+                    {children}
+                </div>
+            </body>
+        </html>
     );
 }
