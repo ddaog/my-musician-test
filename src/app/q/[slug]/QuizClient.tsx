@@ -189,7 +189,7 @@ export default function QuizClient({ slug, initialData }: { slug: string; initia
 
             // GA4 Tracking: Problem Solving Completion
             if (typeof window !== "undefined" && (window as any).gtag) {
-                (window as any).gtag("event", "activate", {
+                (window as any).gtag("event", "activation", {
                     event_category: "test",
                     event_label: "answer_test",
                     service_name: "my-musician-test"

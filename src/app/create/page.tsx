@@ -269,7 +269,7 @@ export default function CreatePage() {
 
             // GA4 Tracking: Test Creation Completion
             if (typeof window !== "undefined" && (window as any).gtag) {
-                (window as any).gtag("event", "activate", {
+                (window as any).gtag("event", "activation", {
                     event_category: "test",
                     event_label: "make_test",
                     service_name: "my-musician-test"
