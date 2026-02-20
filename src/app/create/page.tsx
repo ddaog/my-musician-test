@@ -266,6 +266,16 @@ export default function CreatePage() {
             if (!res.ok) throw new Error(data.error || "생성 실패");
 
             localStorage.removeItem(STORAGE_KEY);
+
+            // GA4 Tracking: Test Creation Completion
+            if (typeof window !== "undefined" && (window as any).gtag) {
+                (window as any).gtag("event", "activate", {
+                    event_category: "test",
+                    event_label: "make_test",
+                    service_name: "my-musician-test"
+                });
+            }
+
             sessionStorage.setItem(`editToken_${data.slug}`, data.editToken);
             router.push(`/q/${data.slug}?created=1`);
         } catch (err) {

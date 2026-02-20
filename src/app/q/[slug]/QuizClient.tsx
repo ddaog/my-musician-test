@@ -186,6 +186,16 @@ export default function QuizClient({ slug, initialData }: { slug: string; initia
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || "제출 실패");
+
+            // GA4 Tracking: Problem Solving Completion
+            if (typeof window !== "undefined" && (window as any).gtag) {
+                (window as any).gtag("event", "activate", {
+                    event_category: "test",
+                    event_label: "answer_test",
+                    service_name: "my-musician-test"
+                });
+            }
+
             router.push(`/q/${slug}/result/${data.submissionId}?score=${data.score}`);
         } catch (err) {
             setError(err instanceof Error ? err.message : "제출에 실패했습니다.");

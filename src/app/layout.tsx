@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
     title: "내 최애 아티스트를 맞춰봐 | my-musician-test",
@@ -43,6 +44,19 @@ export default function RootLayout({
                 />
             </head>
             <body className="antialiased">
+                <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=G-5RXN89H4V0"
+                    strategy="afterInteractive"
+                />
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+
+                        gtag('config', 'G-5RXN89H4V0');
+                    `}
+                </Script>
                 <div
                     style={
                         {
